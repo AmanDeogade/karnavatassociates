@@ -14,14 +14,10 @@ const propertiesRoute = require('./routes/properties');
 const bookingsRoute = require('./routes/bookings');
 const brokersRoute = require('./routes/brokers');
 
-// Connect to MongoDB
-mongoose
-  .connect(process.env.MONGODB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+// Connect to MongoDB (Render)
+mongoose.connect(process.env.ATLASDB_URL)
   .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.log(err));
+  .catch((err) => console.log('MongoDB connection error:', err));
 
 // Middleware
 app.use(bodyParser.json());
@@ -34,7 +30,7 @@ app.use('/api/properties', propertiesRoute);
 app.use('/api/bookings', bookingsRoute);
 app.use('/api/brokers', brokersRoute);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
