@@ -50,7 +50,7 @@
       <div class="navbar-nav">
         <a class="nav-link" href="/listings">Properties</a>
   <a class="nav-link" href="/listings/search">Search</a>
-        <% if (currUser && currUser.userType === 'buyer') { %>
+        <% if (currUser?.userType === 'buyer') { %>
           <a class="nav-link" href="/favorites">Favorites</a>
           <a class="nav-link" href="/recommendations/personalized">Recommendations</a>
         <% } %>
@@ -97,7 +97,7 @@
                   <i class="fa-solid fa-crown text-warning me-2"></i>Special Owner
                 </a></li>
               <% } %>
-              <% if (currUser.userType === 'broker') { %>
+              <% if (currUser?.userType === 'broker') { %>
                 <li><a class="dropdown-item" href="/listings/broker-dashboard">CRM Dashboard</a></li>
                 <li><a class="dropdown-item" href="/leads">All Leads</a></li>
                 <li><a class="dropdown-item" href="/tasks">All Tasks</a></li>
